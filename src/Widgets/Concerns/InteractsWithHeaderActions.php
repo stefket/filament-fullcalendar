@@ -2,7 +2,6 @@
 
 namespace Saade\FilamentFullCalendar\Widgets\Concerns;
 
-use Closure;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use InvalidArgumentException;
@@ -21,11 +20,7 @@ trait InteractsWithHeaderActions
 
     protected function cacheHeaderActions(): void
     {
-        /** @var array<string, Action | ActionGroup> */
-        $actions = Action::configureUsing(
-            Closure::fromCallable([$this, 'configureAction']),
-            fn (): array => $this->headerActions(),
-        );
+        $actions = $this->headerActions();
 
         foreach ($actions as $action) {
             if ($action instanceof ActionGroup) {

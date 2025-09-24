@@ -21,11 +21,7 @@ trait InteractsWithModalActions
 
     protected function cacheModalActions(): void
     {
-        /** @var array<string, Action | ActionGroup> */
-        $actions = Action::configureUsing(
-            Closure::fromCallable([$this, 'configureAction']),
-            fn (): array => $this->modalActions(),
-        );
+        $actions = $this->modalActions();
 
         foreach ($actions as $action) {
             if ($action instanceof ActionGroup) {
