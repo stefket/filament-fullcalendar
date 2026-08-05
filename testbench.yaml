@@ -1,0 +1,2 @@
+providers:
+  - Saade\FilamentFullCalendar\FilamentFullCalendarServiceProvider

@@ -4,6 +4,7 @@ namespace Saade\FilamentFullCalendar;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use InvalidArgumentException;
 
 class FilamentFullCalendarPlugin implements Plugin
 {
@@ -33,7 +34,13 @@ class FilamentFullCalendarPlugin implements Plugin
 
     public static function get(): static
     {
-        return filament(app(static::class)->getId());
+        $plugin = filament(app(static::class)->getId());
+
+        if (! $plugin instanceof static) {
+            throw new InvalidArgumentException('The [' . static::class . '] plugin is not registered on the current panel.');
+        }
+
+        return $plugin;
     }
 
     public function register(Panel $panel): void

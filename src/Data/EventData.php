@@ -5,6 +5,9 @@ namespace Saade\FilamentFullCalendar\Data;
 use DateTimeInterface;
 use Illuminate\Contracts\Support\Arrayable;
 
+/**
+ * @phpstan-consistent-constructor
+ */
 class EventData implements Arrayable
 {
     protected int|string $id;
